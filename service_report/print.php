@@ -95,8 +95,13 @@ $data = $result->fetch_assoc();
     }
     .service-type-grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         gap: 6px 15px;
+    }
+    .service-type-title {
+        font-weight: bold;
+        margin-bottom: 8px;
+        font-size: 11pt;
     }
     .service-type-item {
         font-size: 10pt;
@@ -150,7 +155,6 @@ $data = $result->fetch_assoc();
         border: 1.5px solid #000000;
         font-weight: bold;
         font-size: 12px;
-        background: white;
         flex-shrink: 0;
     }
     
@@ -316,14 +320,15 @@ $data = $result->fetch_assoc();
 
     <!-- Service Type -->
     <div class="service-type">
-        <!-- <div class="service-type-grid"> -->
+        <div class="service-type-title">Jenis Layanan</div>
+        <div class="service-type-grid">
             <div class="service-type-item"><span class="check-symbol">□</span> Instalasi Baru</div>
             <div class="service-type-item"><span class="check-symbol">□</span> Pemantauan Fungsi/Check</div>
             <div class="service-type-item"><span class="check-symbol">□</span> Kalibrasi</div>
             <div class="service-type-item"><span class="check-symbol">☑</span> Pemeliharaan/Maintenance</div>
             <div class="service-type-item"><span class="check-symbol">□</span> Perbaikan/Service</div>
             <div class="service-type-item"><span class="check-symbol">□</span> Recall/Penarikan</div>
-        <!-- </div> -->
+        </div>
     </div>
 
     <!-- Info Alat -->
