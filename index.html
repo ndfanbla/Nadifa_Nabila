@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Portal Website</title>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500&display=swap"
+		rel="stylesheet">
+	<style>
+		:root {
+			--pastel-brown: #d7ccc8;
+			--pastel-cream: #f5f0e6;
+			--pastel-beige: #e6d5c3;
+			--pastel-taupe: #c8b6a6;
+			--pastel-blue: #bbdefb;
+			--pastel-green: #c8e6c9;
+			--soft-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+			--header-gradient: linear-gradient(135deg, #d7ccc8 0%, #e6d5c3 100%);
+		}
+
+		body {
+			font-family: 'Poppins', sans-serif;
+			margin: 0;
+			padding: 0;
+			background-color: #f9f7f7;
+			min-height: 100vh;
+			overflow-x: hidden;
+			color: #5d4037;
+		}
+
+		/* HEADER ELEGAN COKLAT PASTEL */
+		.header {
+			background: var(--header-gradient);
+			color: #5d4037;
+			padding: 50px 30px 60px;
+			text-align: center;
+			box-shadow: var(--soft-shadow);
+			position: relative;
+			z-index: 10;
+			overflow: hidden;
+			border-bottom-left-radius: 40px;
+			border-bottom-right-radius: 40px;
+			margin-bottom: 40px;
+		}
+
+		.header::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 40px;
+			background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".15" fill="%235d4037"></path><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".25" fill="%235d4037"></path><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" opacity=".3" fill="%235d4037"></path></svg>');
+			background-size: cover;
+			background-repeat: no-repeat;
+			transform: rotate(180deg);
+		}
+
+		.header-content {
+			position: relative;
+			z-index: 2;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		.portal-title {
+			font-family: 'Playfair Display', serif;
+			font-size: 48px;
+			font-weight: 700;
+			margin-bottom: 10px;
+			letter-spacing: 1px;
+			color: #5d4037;
+			position: relative;
+			display: inline-block;
+		}
+
+		.portal-title::after {
+			content: '';
+			position: absolute;
+			bottom: -10px;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 80px;
+			height: 3px;
+			background: #8d6e63;
+		}
+
+		.portal-subtitle {
+			font-size: 18px;
+			font-weight: 500;
+			margin: 20px auto;
+			max-width: 600px;
+			line-height: 1.6;
+		}
+
+		/* TOMBOL LOGIN */
+		.login-btn {
+			position: absolute;
+			top: 25px;
+			right: 25px;
+			background: rgba(255, 255, 255, 0.3);
+			border: 2px solid #5d4037;
+			color: #5d4037;
+			padding: 8px 20px;
+			border-radius: 30px;
+			font-weight: 600;
+			cursor: pointer;
+			transition: all 0.3s;
+			backdrop-filter: blur(5px);
+			font-family: 'Poppins', sans-serif;
+		}
+
+		.login-btn:hover {
+			background: rgba(255, 255, 255, 0.5);
+			transform: translateY(-2px);
+		}
+
+		/* BACKGROUND AESTHETIC */
+		.aesthetic-background {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: -1;
+			background: linear-gradient(135deg, #f5f0e6 0%, #f9f7f7 100%);
+			opacity: 0.9;
+		}
+
+		.floating-elements {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: -1;
+			overflow: hidden;
+		}
+
+		.floating-element {
+			position: absolute;
+			opacity: 0.1;
+			animation: float 30s infinite linear;
+		}
+
+		@keyframes float {
+			0% {
+				transform: translate(0, 0) rotate(0deg);
+			}
+
+			100% {
+				transform: translate(100vw, -100vh) rotate(360deg);
+			}
+		}
+
+		/* MENU UTAMA */
+		.menu-grid {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 30px;
+			padding: 40px;
+			max-width: 1000px;
+			margin: 0 auto;
+			position: relative;
+		}
+
+		.menu-item {
+			background-color: white;
+			border-radius: 20px;
+			box-shadow: var(--soft-shadow);
+			height: 220px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			position: relative;
+			overflow: hidden;
+			padding: 20px;
+			border: 1px solid rgba(93, 64, 55, 0.1);
+		}
+
+		.menu-item::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 8px;
+			background: linear-gradient(90deg, var(--pastel-taupe), var(--pastel-beige));
+		}
+
+		.menu-item:hover {
+			transform: translateY(-8px);
+			box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+		}
+
+		.menu-icon {
+			font-size: 80px;
+			margin-bottom: 20px;
+			transition: all 0.3s;
+			color: #8d6e63;
+		}
+
+		.menu-item:hover .menu-icon {
+			transform: scale(1.15);
+			filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.05));
+		}
+
+		.menu-text {
+			font-weight: 600;
+			color: #5d4037;
+			font-size: 18px;
+			padding: 0 15px;
+			font-family: 'Poppins', sans-serif;
+		}
+
+		/* SEARCH BOX */
+		.search-container {
+			text-align: center;
+			margin: 40px 0 20px;
+			position: relative;
+		}
+
+		.search-box {
+			padding: 15px 25px;
+			width: 450px;
+			border-radius: 30px;
+			border: 1px solid rgba(93, 64, 55, 0.2);
+			outline: none;
+			font-size: 16px;
+			background-color: rgba(255, 255, 255, 0.9);
+			box-shadow: var(--soft-shadow);
+			transition: all 0.3s;
+			font-family: 'Poppins', sans-serif;
+		}
+
+		.search-box:focus {
+			border-color: var(--pastel-taupe);
+			box-shadow: 0 0 0 4px rgba(200, 182, 166, 0.2);
+			width: 500px;
+		}
+
+		/* FOOTER */
+		.footer {
+			text-align: center;
+			padding: 30px;
+			margin-top: 50px;
+			color: #8d6e63;
+			font-size: 14px;
+			border-top: 1px solid rgba(93, 64, 55, 0.1);
+		}
+	</style>
+</head>
+
+<body>
+	<div class="aesthetic-background"></div>
+	<div class="floating-elements" id="floatingElements"></div>
+
+	<!-- HEADER ELEGAN COKLAT PASTEL -->
+	<header class="header">
+		<div class="header-content">
+			<button class="login-btn">Login</button>
+
+			<h1 class="portal-title">PORTAL WEBSITE</h1>
+			<p class="portal-subtitle">Sistem informasi terpadu untuk manajemen data dan administrasi</p>
+		</div>
+	</header>
+
+	<div class="search-container">
+		<input type="text" class="search-box" placeholder="🔍 Cari modul atau layanan...">
+	</div>
+
+	<div class="menu-grid">
+		<!-- Baris Pertama -->
+		<div class="menu-item">
+			<a href="f_data_kerusakan/home.php">
+				<div class="menu-icon">🛠️</div>
+				<div class="menu-text">Data Kerusakan</div>
+			</a>
+		</div>
+
+		<div class="menu-item">
+			<a href="kerusakan/home.php"></a>
+				<div class="menu-icon">📁</div>
+				<div class="menu-text">Arsip Dokumen</div>
+			</a>
+		</div>
+
+		<div class="menu-item">
+			<div class="menu-icon">🔍</div>
+			<div class="menu-text">Telaah</div>
+		</div>
+
+		<!-- Baris Kedua -->
+		<div class="menu-item">
+			<div class="menu-icon">📦</div>
+			<div class="menu-text">Permintaan Logistik</div>
+		</div>
+
+		<div class="menu-item">
+			<div class="menu-icon">💻</div>
+			<div class="menu-text">Data Komputer</div>
+		</div>
+
+		<div class="menu-item">
+			<div class="menu-icon">📝</div>
+			<div class="menu-text">Note/Catatan</div>
+		</div>
+	</div>
+
+	<div class="footer">
+		© 2023 Portal Website - Sistem Informasi Terpadu
+	</div>
+
+	<script>
+		// Create floating aesthetic elements
+		document.addEventListener('DOMContentLoaded', function () {
+			const container = document.getElementById('floatingElements');
+			const shapes = [
+				'M20,50 Q30,30 40,50 T60,50 T80,50 T100,50 T120,50', // Wave
+				'M10,10 L90,10 L50,90 Z', // Triangle
+				'M20,20 H80 V80 H20 Z', // Square
+				'M50,20 A30,30 0 1,1 50,80 A30,30 0 1,1 50,20 Z' // Circle
+			];
+
+			const colors = ['#8d6e63', '#a1887f', '#bcaaa4', '#d7ccc8'];
+
+			for (let i = 0; i < 15; i++) {
+				const element = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+				element.setAttribute('viewBox', '0 0 100 100');
+				element.setAttribute('class', 'floating-element');
+				element.style.width = `${Math.random() * 200 + 100}px`;
+				element.style.height = `${Math.random() * 200 + 100}px`;
+				element.style.left = `${Math.random() * 100}%`;
+				element.style.top = `${Math.random() * 100}%`;
+				element.style.opacity = `${Math.random() * 0.1 + 0.05}`;
+				element.style.animationDuration = `${Math.random() * 40 + 20}s`;
+				element.style.animationDelay = `${Math.random() * 10}s`;
+
+				const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+				path.setAttribute('d', shapes[Math.floor(Math.random() * shapes.length)]);
+				path.setAttribute('fill', colors[Math.floor(Math.random() * colors.length)]);
+
+				element.appendChild(path);
+				container.appendChild(element);
+			}
+		});
+	</script>
+</body>
+
+</html>

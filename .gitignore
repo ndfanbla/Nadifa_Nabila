@@ -1,0 +1,22 @@
+# Upload directories
+uploads/
+service_report/img/
+
+# Print files
+*.pdf
+
+# IDE dan editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Cache
+*.cache
