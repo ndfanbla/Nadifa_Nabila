@@ -10,7 +10,6 @@ $data = $result->fetch_assoc();
     <meta charset="UTF-8">
     <title>Print Service Report</title>
     <style>
-       <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
         font-family: 'Times New Roman', Times, serif;
@@ -86,22 +85,25 @@ $data = $result->fetch_assoc();
         flex: 1;
     }
     
-    /* Service Type dengan border */
+    /* Service Type dengan layout label kiri dan checkbox kanan */
     .service-type {
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
         margin: 15px 0;
         padding: 10px 0;
-        border-top: 1px solid #000000;
-        border-bottom: 1px solid #000000;
+    }
+    .service-type-label {
+        width: 170px;
+        font-weight: bold;
+        font-size: 12pt;
+        line-height: 1.4;
     }
     .service-type-grid {
+        flex: 1;
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 6px 15px;
-    }
-    .service-type-title {
-        font-weight: bold;
-        margin-bottom: 8px;
-        font-size: 11pt;
     }
     .service-type-item {
         font-size: 10pt;
@@ -115,18 +117,78 @@ $data = $result->fetch_assoc();
         text-align: center;
     }
     
-    /* Info Alat dengan border */
+    /* Info Alat dengan border
     .info-alat {
         margin: 15px 0;
         padding: 10px 0;
         border-top: 1px solid #000000;
         border-bottom: 1px solid #000000;
-    }
+    } */
     
+/* Info Alat - Format 2 kolom kiri-kanan */
+.info-alat {
+    margin: 15px 0;
+    padding: 10px 0;
+    /* border-top: 1px solid #000000; */
+    /* border-bottom: 1px solid #000000; */
+}
+
+.info-alat-two-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 30px;
+}
+
+.info-alat-row {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+}
+
+.info-alat-label {
+    font-weight: bold;
+    width: 130px;  /* Lebar konsisten untuk semua label */
+    flex-shrink: 0;
+}
+
+.info-alat-value {
+    flex: 1;
+    word-break: break-word;
+}
+
+/* Untuk S/N dan Tahun dalam satu baris */
+.info-alat-inline-pair {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.info-alat-pair {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.info-alat-pair .info-alat-label {
+    width: auto;
+    min-width: 100px;
+}
+
+.info-alat-pair .info-alat-value {
+    flex: 0 1 auto;
+}
+
+
+
+
+
     /* Pemeriksaan Grid dengan border hitam */
     .check-section {
         margin: 15px 0;
-        border: 1px solid #000000;
+        /* border: 1px solid #000000; */
         padding: 12px;
     }
     .check-section-title {
@@ -160,7 +222,10 @@ $data = $result->fetch_assoc();
     
     /* Permasalahan dan Keterangan */
     .problem-section, .keterangan-section {
-        margin: 12px 0;
+        margin: 15px 0;
+        border: 1px solid #000000;
+        padding: 12px;
+        
     }
     .problem-row, .keterangan-row {
         display: flex;
@@ -175,12 +240,18 @@ $data = $result->fetch_assoc();
         flex: 1;
     }
     
+        /* Tambahan: atur margin atas isi konten juga jika perlu */
+    .problem-content, .keterangan-content {
+        line-height: 1.5;
+        margin-top: 4px;
+    }
+
     /* Hasil Pemeriksaan */
     .hasil-section {
         margin: 15px 0;
         padding: 10px 0;
-        border-top: 1px solid #000000;
-        border-bottom: 1px solid #000000;
+        /* border-top: 1px solid #000000;
+        border-bottom: 1px solid #000000; */
     }
     .hasil-row {
         display: flex;
@@ -277,6 +348,21 @@ $data = $result->fetch_assoc();
         right: 10px;
         z-index: 1000;
     }
+
+    .check-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 8px;
+        font-size: 10pt;
+    }
+
+    .check-item .check-symbol {
+        font-size: 14px;
+        display: inline-block;
+        width: 14px;
+        text-align: center;
+    }
 </style>
 </head>
 <body>
@@ -311,38 +397,92 @@ $data = $result->fetch_assoc();
     </div>
 
     <!-- Service Report No & Tanggal -->
-    <div class="info-row">
-        <div class="info-label">Service Report No :</div>
-        <div class="info-value"><?= $data['report_number'] ?></div>
-        <div class="info-label" style="width:80px">Tanggal :</div>
-        <div class="info-value"><?= date('d F Y', strtotime($data['report_date'])) ?></div>
-    </div>
+<div class="info-row">
+    <div class="info-label">Service Report No :</div>
+    <div class="info-value"><?= $data['report_number'] ?></div>
+    <div class="info-label" style="width:80px">Tanggal :</div>
+    <div class="info-value"><?= date('d F Y', strtotime($data['report_date'])) ?></div>
+</div>
 
     <!-- Service Type -->
-    <div class="service-type">
-        <div class="service-type-title">Jenis Layanan</div>
-        <div class="service-type-grid">
-            <div class="service-type-item"><span class="check-symbol">□</span> Instalasi Baru</div>
-            <div class="service-type-item"><span class="check-symbol">□</span> Pemantauan Fungsi/Check</div>
-            <div class="service-type-item"><span class="check-symbol">□</span> Kalibrasi</div>
-            <div class="service-type-item"><span class="check-symbol">☑</span> Pemeliharaan/Maintenance</div>
-            <div class="service-type-item"><span class="check-symbol">□</span> Perbaikan/Service</div>
-            <div class="service-type-item"><span class="check-symbol">□</span> Recall/Penarikan</div>
+    <!-- Service Type - Format seperti Pemeriksaan -->
+<div class="service-type">
+    <div class="service-type-label">Service Report Type :</div>
+    <div class="service-type-grid">
+        <div class="check-item-print">
+            <span class="check-box">□</span> Instalasi Baru
+        </div>
+        <div class="check-item-print">
+            <span class="check-box">□</span> Pemantauan Fungsi/Check
+        </div>
+        <div class="check-item-print">
+            <span class="check-box">□</span> Kalibrasi
+        </div>
+        <div class="check-item-print">
+            <span class="check-box">☑</span> Pemeliharaan/Maintenance
+        </div>
+        <div class="check-item-print">
+            <span class="check-box">□</span> Perbaikan/Service
+        </div>
+        <div class="check-item-print">
+            <span class="check-box">□</span> Recall/Penarikan
         </div>
     </div>
+</div>
 
-    <!-- Info Alat -->
-    <div class="info-alat">
-        <div class="info-row"><div class="info-label">Nama Sarana</div><div class="info-value">: <?= $data['room_name'] ?></div></div>
-        <div class="info-row"><div class="info-label">Prasarana</div><div class="info-value">: <?= $data['facility_type'] ?></div></div>
-        <div class="info-row"><div class="info-label">Merk</div><div class="info-value">: <?= $data['brand'] ?></div></div>
-        <div class="info-row"><div class="info-label">Type/Model</div><div class="info-value">: <?= $data['model'] ?></div></div>
-                <div class="info-row"><div class="info-label">S/N (Kode Alat)</div><div class="info-value">: <?= $data['sn_code'] ?: '-' ?></div></div>
-        <div class="info-row"><div class="info-label">Kalibrasi Terakhir</div><div class="info-value">: <?= $data['last_calibration'] ?: '-' ?></div></div>
-        <div class="info-row"><div class="info-label">Distributor</div><div class="info-value">: <?= $data['distributor'] ?: '-' ?></div></div>
-        <div class="info-row"><div class="info-label">Tahun</div><div class="info-value">: <?= $data['year'] ?: '-' ?></div></div>
-
+    <!-- Info Alat - Format 2 kolom kiri-kanan seperti contoh gambar -->
+<div class="info-alat">
+    <b>Nama Sarana</b>
+    <div class="info-alat-two-columns">
+        <!-- BARIS 1 KIRI: Nama Sarana -->
+        <div class="info-alat-row">
+            <div class="info-alat-label">Prasarana</div>
+            <div class="info-alat-value">: <?= $data['facility_type'] ?: '-' ?></div>
+        </div>
+        
+        <!-- BARIS 2 KANAN: Ruangan -->
+        <div class="info-alat-row">
+            <div class="info-alat-label">Ruangan</div>
+            <div class="info-alat-value">: <?= $data['room_name'] ?></div>
+        </div>
+        
+        <!-- BARIS 3 KANAN: Kalibrasi Terakhir -->
+        <div class="info-alat-row">
+            <div class="info-alat-label">Kalibrasi Terakhir</div>
+            <div class="info-alat-value">: <?= $data['last_calibration'] ?: '-' ?></div>
+        </div>
+        
+        <!-- BARIS 4 KIRI: Merk -->
+        <div class="info-alat-row">
+            <div class="info-alat-label">Merk</div>
+            <div class="info-alat-value">: <?= $data['brand'] ?></div>
+        </div>
+        
+        <!-- BARIS 5 KANAN: Distributor -->
+        <div class="info-alat-row">
+            <div class="info-alat-label">Distributor</div>
+            <div class="info-alat-value">: <?= $data['distributor'] ?: '-' ?></div>
+        </div>
+        
+        <!-- BARIS 6 KIRI: Type/Model -->
+        <div class="info-alat-row">
+            <div class="info-alat-label">Type/Model</div>
+            <div class="info-alat-value">: <?= $data['model'] ?></div>
+        </div>
+        
+        <!-- BARIS 7 KIRI: S/N (Kode Alat) -->
+        <div style="margin-top:16px" class="info-alat-row">
+            <div class="info-alat-label">S/N (Kode Alat)</div>
+            <div class="info-alat-value">: <?= $data['sn_code'] ?: '-' ?></div>
+        </div>
+        
+        <!-- BARIS 8 KANAN: Tahun -->
+        <div style="margin-top:16px" class="info-alat-row">
+            <div class="info-alat-label">Tahun</div>
+            <div class="info-alat-value">: <?= $data['year'] ?: '-' ?></div>
+        </div>
     </div>
+</div>
 
     <!-- Pemeriksaan -->
     <div class="check-section">
@@ -381,17 +521,17 @@ $data = $result->fetch_assoc();
 
     <!-- Permasalahan dan Solusi -->
     <div class="problem-section">
-        <div class="problem-row">
-            <div class="problem-label">Permasalahan dan Solusi</div>
-            <div class="problem-value">: <?= nl2br(htmlspecialchars($data['problem_solution'])) ?></div>
+        <div class="section-title">Permasalahan dan Solusi:</div>
+        <div class="problem-content">
+             <?= nl2br(htmlspecialchars($data['problem_solution'])) ?>
         </div>
     </div>
 
     <!-- Keterangan -->
     <div class="keterangan-section">
-        <div class="keterangan-row">
-            <div class="keterangan-label">Keterangan</div>
-            <div class="keterangan-value">: <?= nl2br(htmlspecialchars($data['description'])) ?></div>
+        <div class="section-title">Keterangan:</div>
+        <div class="keterangan-content">
+             <?= nl2br(htmlspecialchars($data['description'])) ?>
         </div>
     </div>
 
