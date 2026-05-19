@@ -32,7 +32,7 @@ if ($method === 'GET') {
 
     $countResult = $conn->query("SELECT COUNT(*) as total FROM service_reports WHERE YEAR(created_at) = $year");
     $countRow = $countResult->fetch_assoc();
-    $seq = $countRow['total'] + 150;
+    $seq = $countRow['total'] + 115;
     $reportNumber = "$seq/SR/$bulanRomawi/$year";
 
     if (isset($input['id']) && !empty($input['id'])) {
