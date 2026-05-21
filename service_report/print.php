@@ -22,90 +22,159 @@ $data = $result->fetch_assoc();
         padding: 0;
     }
     
-/* KOP SURAT - SESUAI SPESIFIKASI */
-.kop {
-    text-align: center;
-    border-bottom: 4px double #000000;  /* GARIS DOUBLE HITAM 4px */
-    padding-bottom: 8px;
-    margin-bottom: 20px;
-}
-
-.logo-row {
-    display: flex;
-    justify-content: space-between;  /* LOGO KIRI DAN KANAN */
-    align-items: center;
-    gap: 0;
-    margin-bottom: 5px;
-}
-
-.logo-left, .logo-right {
-    flex: 0 0 auto;
-}
-
-.logo {
-    width: 75px;   /* UKURAN LOGO 75x75px */
-    height: 75px;
-    object-fit: contain;
-}
-
-.kop-text {
-    text-align: center;
-    flex: 1;
-}
-
-.kop h2 {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 14px;        /* UKURAN 14px */
-    letter-spacing: 0px;
-    margin: 2px 0;
-    font-weight: 700;       /* BOLD */
-}
-
-.kop h3 {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 18px;        /* UKURAN 18px */
-    margin: 2px 0;
-    font-weight: 700;       /* BOLD */
-}
-
-.kop p {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 9px;         /* UKURAN 9px NORMAL */
-    margin: 2px 0;
-    line-height: 1.3;
-    font-weight: 400;       /* NORMAL (TIDAK BOLD) */
-}
-    
-    /* Title Service Report - DIPERBESAR */
-    .title-service {
+    /* KOP SURAT - SESUAI SPESIFIKASI */
+    .kop {
+        width: 18cm;
         text-align: center;
-        margin: 15px 0 20px 0;
+        border-bottom: 2px solid #000000;
+        margin-bottom: 20px;
+        background: white;
     }
-    .title-service h4 {
-        font-size: 18px;  /* DIPERBESAR DARI 14px */
-        text-decoration: underline;
-        margin: 3px 0;
-        font-weight: bold;
-    }
-    
-    /* Layout No dan Tanggal */
-    .info-row {
+
+    .logo-row {
         display: flex;
-        margin-bottom: 8px;
-        line-height: 1.4;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0;
     }
-    .info-label {
-        width: 140px;
-        font-weight: bold;
+
+    .logo-left, .logo-right {
+        flex: 0 0 auto;
     }
-    .info-value {
+
+    .logo {
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+    }
+
+    .kop-text {
+        text-align: center;
         flex: 1;
     }
     
+        /* Baris 1: PEMERINTAH KOTA BANJARMASIN */
+    .baris1 {
+        font-family: 'Arial', sans-serif;
+        font-weight: normal;
+        font-size: 18pt;
+        letter-spacing: normal;
+        text-transform: uppercase;
+        color: black;
+        margin: 2px 0;
+        line-height: 1.0;
+        text-align: center;
+    }
+
+    /* Baris 2: RSUD SULTAN SURIANSYAH (BOLD) */
+    .baris2 {
+        font-family: 'Arial', sans-serif;
+        font-weight: bold;
+        font-size: 18pt;
+        letter-spacing: normal;
+        text-transform: uppercase;
+        color: black;
+        margin: 2px 0 4px 0;
+        line-height: 1.0;
+        text-align: center;
+    }
+
+    /* CSS KHUSUS SERVICE REPORT - TERPISAH DARI KOP SURAT */
+    .title-service h4 {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 13pt;
+        font-weight: bold;
+        text-align: center;
+        color: black;
+    }
+
+    .service-report-left {
+        font-family: 'Arial', sans-serif;
+        font-size: 11pt;
+        font-weight: bold;
+        float: left;
+        margin-top: 10px;
+    }
+
+    .service-report-right {
+        font-family: 'Arial', sans-serif;
+        font-size: 11pt;
+        font-weight: bold;
+        float: right;
+        margin-top: 10px;
+    }
+
+    /* Clearfix */
+    .title-service {
+        overflow: auto;
+    }
+
+    .service-left {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 11pt;
+        float: left;
+    }
+
+    .service-right {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 11pt;
+        float: right;
+    }
+
+    .info-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 10px;
+        font-family: 'Arial', sans-serif;
+        font-size: 11pt;
+    }
+
+    .info-label {
+        font-weight: bold;
+        color: black;
+    }
+
+    .info-value {
+        font-weight: normal;
+        color: black;
+    }
+
+    /* Alamat dan kontak biasa (termasuk Telepon) */
+    .alamat, .kontak {
+        font-family: 'Arial', sans-serif;
+        font-weight: normal;
+        font-size: 9pt;
+        letter-spacing: normal;
+        text-transform: none;
+        color: black;
+        margin: 0;
+        line-height: 1.0;
+        text-align: center;
+    }
+
+    /* Link website dan email */
+    .link {
+        font-family: 'Arial', sans-serif;
+        font-weight: normal;
+        font-size: 9pt;
+        text-decoration: underline;
+        color: #0066cc;
+        line-height: 1.0;
+        text-align: center;
+    }
+
+    .link:hover {
+        color: #004499;
+        text-decoration: underline;
+    }
+
     /* Service Type - CHECKBOX HORIZONTAL */
     .service-type {
         margin: 10px 0;
         padding: 5px 0;
+        display: flex;
+        
     }
     .service-type-label {
         font-weight: bold;
@@ -115,8 +184,8 @@ $data = $result->fetch_assoc();
     .service-type-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 5px 20px;
-        margin-left: 0;
+        gap: 2px 20px;
+        margin-left: 30px;
     }
     .service-type-item {
         font-size: 10pt;
@@ -133,13 +202,12 @@ $data = $result->fetch_assoc();
     }
     .info-alat-title {
         font-weight: bold;
-        margin-bottom: 8px;
         font-size: 11pt;
     }
     .info-alat-two-columns {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 6px 30px;
+        gap: 2px 30px;
     }
     .info-alat-row {
         display: flex;
@@ -147,8 +215,7 @@ $data = $result->fetch_assoc();
         flex-wrap: wrap;
     }
     .info-alat-label {
-        font-weight: bold;
-        width: 110px;
+        width: 124px;
         flex-shrink: 0;
     }
     .info-alat-value {
@@ -163,13 +230,12 @@ $data = $result->fetch_assoc();
     }
     .check-section-title {
         font-weight: bold;
-        margin-bottom: 8px;
         font-size: 11pt;
     }
     .pemeriksaan-grid-print {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 6px 20px;
+        gap: 2px 20px;
     }
     .check-item-print {
         display: flex;
@@ -199,7 +265,7 @@ $data = $result->fetch_assoc();
    
     /* Keterangan - BORDER FULL */
     .keterangan-section {
-        margin: 0px 0;
+        margin-top: 2px;
         border: 1px solid #000000;
         padding: 8px;
     }
@@ -260,7 +326,7 @@ $data = $result->fetch_assoc();
     @media print {
         @page {
             size: A4;
-            margin: 2cm 2cm 2.5cm 2cm;
+            margin: 1cm 2cm 2.5cm 2cm;
         }
         body {
             margin: 0;
@@ -306,45 +372,54 @@ $data = $result->fetch_assoc();
 <div class="print-container">
     <button class="no-print" onclick="window.print()">🖨️ Cetak / Print</button>
     
-<!-- KOP SURAT - SESUAI SPESIFIKASI -->
-<div class="kop">
-    <div class="logo-row">
-        <?php
-        $logo_pemko = 'img/logo_pemko.png';
-        $logo_rss = 'img/logo_rss.png';
-        ?>
-        <div class="logo-left">
-            <img src="<?= $logo_pemko ?>" alt="Logo Pemko" class="logo"
-                 onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2275%22 height=%2275%22%3E%3Crect width=%2275%22 height=%2275%22 fill=%22%232c6e2a%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22%3ELogo%3C/text%3E%3C/svg%3E'">
-        </div>
-        <div class="kop-text">
-            <h2>PEMERINTAH KOTA BANJARMASIN</h2>
-            <h3>RSUD SULTAN SURIANSYAH</h3>
-            <p>Jalan Rantauan Darat RT.04 RW.01 Banjarmasin Kode Pos 70246</p>
-            <p>Telepon: (0511)6782000 / (0511)6783707</p>
-            <p>Website: http://rsudss.banjarmasinkota.go.id</p>
-            <p>Email: rsudsultansuriansyah@gmail.com</p>
-        </div>
-        <div class="logo-right">
-            <img src="<?= $logo_rss ?>" alt="Logo RSS" class="logo" 
-                 onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2275%22 height=%2275%22%3E%3Crect width=%2275%22 height=%2275%22 fill=%22%232c6e2a%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22%3ELogo%3C/text%3E%3C/svg%3E'">
+    <!-- KOP SURAT - SESUAI SPESIFIKASI -->
+    <div class="kop">
+        <div class="logo-row">
+            <?php
+            $logo_pemko = 'img/logo_pemko.png';
+            $logo_rss = 'img/logo_rss.png';
+            ?>
+            <div class="logo-left">
+                <img src="<?= $logo_pemko ?>" alt="Logo Pemko" class="logo"
+                    onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2275%22 height=%2275%22%3E%3Crect width=%2275%22 height=%2275%22 fill=%22%232c6e2a%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22%3ELogo%3C/text%3E%3C/svg%3E'">
+            </div>
+            <div class="kop-text">
+                <div class="baris1">PEMERINTAH KOTA BANJARMASIN</div>
+                <div class="baris2">RSUD SULTAN SURIANSYAH</div>
+                <div class="alamat">Jalan Rantauan Darat RT.04 RW.01 Banjarmasin Kode Pos 70246</div>
+                <div class="kontak">Telepon: (0511)6782000 / (0511)6783707</div>
+                <div style="display:flex; font-size: 9pt; justify-content: center; gap: 4px;">
+                    <span>Website: </span>
+                    <span class="kontak">
+                        <a href="http://rsudss.banjarmasinkota.go.id" class="link" target="_blank">http://rsudss.banjarmasinkota.go.id</a>
+                    </span>
+                    <span>E-mail: </span>
+                    <span class="kontak">
+                        <a href="mailto:rsudsultansuriansyah@gmail.com" class="link" target="_blank">rsudsultansuriansyah@gmail.com</a>
+                    </span>
+                </div>
+            </div>
+            <div class="logo-right">
+                <img src="<?= $logo_rss ?>" alt="Logo RSS" class="logo" 
+                    onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2275%22 height=%2275%22%3E%3Crect width=%2275%22 height=%2275%22 fill=%22%232c6e2a%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22%3ELogo%3C/text%3E%3C/svg%3E'">
+            </div>
         </div>
     </div>
+    <hr style="posision:relative; transform: translateY(-19px);">
+
+<!-- TITLE SERVICE REPORT -->
+<div class="title-service">
+    <h4><u>SERVICE REPORT</u></h4>
+    <h4><u>RSUD SULTAN SURIANSYAH BANJARMASIN</u></h4>
 </div>
+<br>
 
-    <!-- TITLE -->
-    <div class="title-service">
-        <h4>SERVICE REPORT</h4>
-        <h4>RSUD SULTAN SURIANSYAH BANJARMASIN</h4>
-    </div>
+<!-- Service Report No & Tanggal -->
+<div class="service-left"><b>Service Report No : </b>115/SR/V/2026</div>
+<div class="service-right"><b>Tanggal: 18 May 2026</b></div>
 
-    <!-- Service Report No & Tanggal -->
-    <div class="info-row">
-        <div class="info-label">Service Report No :</div>
-        <div class="info-value"><?= isset($data['report_number']) ? $data['report_number'] : '-' ?></div>
-        <div class="info-label" style="width:80px">Tanggal :</div>
-        <div class="info-value"><?= isset($data['report_date']) ? date('d F Y', strtotime($data['report_date'])) : '-' ?></div>
-    </div>
+<!-- Clearfix agar tidak mengganggu layout bawahnya -->
+<div style="clear: both;"></div>
 
     <!-- Service Type -->
     <div class="service-type">
@@ -384,26 +459,26 @@ $data = $result->fetch_assoc();
                 <div class="info-alat-value">: <?= isset($data['room_name']) && $data['room_name'] ? $data['room_name'] : '-' ?></div>
             </div>
             <div class="info-alat-row">
-                <div class="info-alat-label">Kalibrasi Terakhir</div>
-                <div class="info-alat-value">: <?= isset($data['last_calibration']) && $data['last_calibration'] ? $data['last_calibration'] : '-' ?></div>
-            </div>
-            <div class="info-alat-row">
                 <div class="info-alat-label">Merk</div>
                 <div class="info-alat-value">: <?= isset($data['brand']) && $data['brand'] ? $data['brand'] : '-' ?></div>
             </div>
             <div class="info-alat-row">
-                <div class="info-alat-label">Distributor</div>
-                <div class="info-alat-value">: <?= isset($data['distributor']) && $data['distributor'] ? $data['distributor'] : '-' ?></div>
+                <div class="info-alat-label">Kalibrasi Terakhir</div>
+                <div class="info-alat-value">: <?= isset($data['last_calibration']) && $data['last_calibration'] ? $data['last_calibration'] : '-' ?></div>
             </div>
             <div class="info-alat-row">
                 <div class="info-alat-label">Type/Model</div>
                 <div class="info-alat-value">: <?= isset($data['model']) && $data['model'] ? $data['model'] : '-' ?></div>
             </div>
             <div class="info-alat-row">
+                <div class="info-alat-label">Distributor</div>
+                <div class="info-alat-value">: <?= isset($data['distributor']) && $data['distributor'] ? $data['distributor'] : '-' ?></div>
+            </div>
+            <div style="margin-top: 20px;" class="info-alat-row">
                 <div class="info-alat-label">S/N (Kode Alat)</div>
                 <div class="info-alat-value">: <?= isset($data['sn_code']) && $data['sn_code'] ? $data['sn_code'] : '-' ?></div>
             </div>
-            <div class="info-alat-row">
+            <div style="margin-top: 20px;" class="info-alat-row">
                 <div class="info-alat-label">Tahun</div>
                 <div class="info-alat-value">: <?= isset($data['year']) && $data['year'] ? $data['year'] : '-' ?></div>
             </div>
@@ -485,13 +560,13 @@ $data = $result->fetch_assoc();
     <!-- Tanda Tangan -->
     <div class="signature">
         <div>
-           <br>User<br><br><br><br><br>(.............................................)
+           <br>User<br><br><br><br><br>(...........................................)
         </div>
         <div>
-            Mengetahui,<br>Ka. PDE<br><br><br><br><br>(.............................................)
+            Mengetahui,<br>Ka. PDE<br><br><br><br><br>(...........................................)
         </div>
         <div>
-            <br>Staff PDE<br><br><br><br><br>(.............................................)
+            <br>Staff PDE<br><br><br><br><br>(...........................................)
         </div>
     </div>
 </div>
